@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/MainLayout.js";
 import Home from "./pages/Home.js";
 import Cart from "./pages/Cart.js";
-import SinglePizza from "./pages/SinglePizza.js";
+import SinglePizza from "./pages/SinglePizza";
 import NotFound from "./pages/NotFound.js";
 
 function App() {
