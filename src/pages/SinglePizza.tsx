@@ -2,8 +2,12 @@ import React from "react";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
-export default function SinglePizza() {
-	const [pizza, setPizza] = React.useState();
+const SinglePizza: React.FC = () => {
+	const [pizza, setPizza] = React.useState<{
+		image: string;
+		price: string;
+		title: number;
+	}>();
 	const { id } = useParams();
 	const navigate = useNavigate();
 	React.useEffect(() => {
@@ -36,4 +40,6 @@ export default function SinglePizza() {
 			<h4>{pizza.price} uah</h4>
 		</div>
 	);
-}
+};
+
+export default SinglePizza;
