@@ -18,10 +18,10 @@ import {
 import qs from "qs";
 import { useNavigate, Link } from "react-router-dom";
 
-import Categories from "../components/Categories.js";
-import Sort, { sortList } from "../components/Sort.js";
-import PizzaBlock from "../components/PizzaBlock.js";
-import Skeleton from "../components/Skeleton.js";
+import Categories from "../components/Categories";
+import Sort, { sortList } from "../components/Sort";
+import PizzaBlock from "../components/PizzaBlock";
+import Skeleton from "../components/Skeleton";
 import Pagination from "../components/Pagination/";
 
 export default function Home() {

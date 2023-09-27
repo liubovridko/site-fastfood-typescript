@@ -1,6 +1,7 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CartEmpty() {
+export default function CartEmpty(): React.ReactNode {
 	return (
 		<div className="container--cart">
 			<div className="cart cart--empty">

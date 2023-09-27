@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import MainLayout from "./components/MainLayout.js";
+import MainLayout from "./components/MainLayout";
 import Home from "./pages/Home.js";
 import Cart from "./pages/Cart.js";
 import SinglePizza from "./pages/SinglePizza";
