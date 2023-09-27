@@ -1,6 +1,6 @@
 import styles from "./NotFoundBlock.module.scss";
 
-export default function NotFoundBlock() {
+export default function NotFoundBlock(): React.ReactNode {
 	return (
 		<div className={styles.not_found}>
 			<h1>
