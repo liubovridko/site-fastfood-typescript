@@ -24,7 +24,7 @@ import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/Skeleton";
 import Pagination from "../components/Pagination/";
 
-export default function Home() {
+export default function Home(): React.ReactNode {
 	const { items, status } = useSelector(selectPizzaData);
 
 	const { categoryId, sort, currentPage, searchValue } =
@@ -39,7 +39,7 @@ export default function Home() {
 	//const [isLoading, setIsLoading] = React.useState(true);
 	//const [categoryId, setCategoryId] = React.useState(0);
 
-	const onClickCategory = React.useCallback((id) => {
+	const onClickCategory = React.useCallback((id: number) => {
 		dispatch(setCategoryId(id));
 	}, []);
 	/*const [sortObj, setSortObj] = React.useState({
@@ -47,7 +47,7 @@ export default function Home() {
 		sortProperty: "rating",
 	});*/
 	/*const [currentPage, setCurrentPage] = React.useState(1);*/
-	const onChangePage = (page) => {
+	const onChangePage = (page: number) => {
 		dispatch(setCurrentPage(page));
 	};
 
@@ -83,6 +83,7 @@ export default function Home() {
 
 		try {
 			dispatch(
+				//@ts-ignore
 				fetchPizzas({ category, sortBy, order, search, currentPage }),
 			);
 			/*const res = await axios.get(
@@ -128,7 +129,7 @@ export default function Home() {
 								<Skeleton key={index} />
 						  ))
 						: items
-								.filter((obj) => {
+								.filter((obj: any) => {
 									if (
 										obj.title
 											.toLowerCase()
@@ -138,7 +139,7 @@ export default function Home() {
 									}
 									return false;
 								})
-								.map((item, key) => (
+								.map((item: any, key: any) => (
 									<Link
 										key={item.id}
 										to={`/pizza/${item.id}`}
@@ -150,10 +151,7 @@ export default function Home() {
 				</div>
 			)}
 
-			<Pagination
-				currrentPage={currentPage}
-				onChangePage={onChangePage}
-			/>
+			<Pagination currentPage={currentPage} onChangePage={onChangePage} />
 		</div>
 	);
 }

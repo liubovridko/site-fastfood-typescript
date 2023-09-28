@@ -2,10 +2,10 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "./components/MainLayout";
-import Home from "./pages/Home.js";
-import Cart from "./pages/Cart.js";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
 import SinglePizza from "./pages/SinglePizza";
-import NotFound from "./pages/NotFound.js";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
