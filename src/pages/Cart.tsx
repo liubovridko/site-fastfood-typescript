@@ -1,11 +1,12 @@
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem, clearItems, selectCart } from "../redux/slices/cartSlice.js";
 import CartItem from "../components/CartItem";
 import CartEmpty from "./CartEmpty";
 
-export default function Cart() {
+export default function Cart(): React.ReactNode {
 	const { items, totalPrice } = useSelector(selectCart);
-	const totalCount = items.reduce((sum, obj) => {
+	const totalCount = items.reduce((sum: number, obj: any) => {
 		return sum + obj.count;
 	}, 0);
 	const dispatch = useDispatch();
@@ -95,7 +96,7 @@ export default function Cart() {
 					</div>
 				</div>
 				<div className="cart__items">
-					{items.map((item) => (
+					{items.map((item: any) => (
 						<CartItem key={item.id} {...item} />
 					))}
 				</div>

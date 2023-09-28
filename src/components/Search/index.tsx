@@ -7,17 +7,17 @@ import styles from "./Search.module.scss";
 
 import debounce from "lodash.debounce";
 
-export default function Search() {
+export default function Search(): React.ReactNode {
 	const dispatch = useDispatch();
-	const [value, setValue] = React.useState("");
+	const [value, setValue] = React.useState<string>("");
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
-	const onChangeInput = (event) => {
+	const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(event.target.value);
 		updateSearchValue(event.target.value);
 	};
 	const updateSearchValue = React.useCallback(
-		debounce((str) => {
+		debounce((str: string) => {
 			dispatch(setSearchValue(str));
 		}, 1000),
 		[],

@@ -22,8 +22,8 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 	types,
 }) => {
 	const dispatch = useDispatch();
-	const cartItem = useSelector((state) =>
-		state.cartReducer.items.find((obj) => obj.id == id),
+	const cartItem = useSelector((state: any) =>
+		state.cartReducer.items.find((obj: any) => obj.id == id),
 	); //selectCartItemById(id)
 
 	const pizzaCount = cartItem ? cartItem.count : 0;
