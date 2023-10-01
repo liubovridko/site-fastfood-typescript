@@ -13,13 +13,16 @@ import {
 	selectPizzaData,
 	setItems,
 	fetchPizzas,
+	SearchPizzaParams,
 } from "../redux/slices/pizzaSlice.js";
+
+import { useAppDispatch } from "../redux/store";
 
 import qs from "qs";
 import { useNavigate, Link } from "react-router-dom";
 
 import Categories from "../components/Categories";
-import Sort, { sortList } from "../components/Sort";
+import SortPopup, { sortList } from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/Skeleton";
 import Pagination from "../components/Pagination/";
@@ -30,7 +33,7 @@ export default function Home(): React.ReactNode {
 	const { categoryId, sort, currentPage, searchValue } =
 		useSelector(selectFilter);
 
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch(); //useDispatch- without typing
 	const navigate = useNavigate();
 
 	const isSearch = React.useRef(false);
@@ -66,9 +69,11 @@ export default function Home(): React.ReactNode {
 	//if first render is done-check url params and save it in redux
 	React.useEffect(() => {
 		if (window.location.search) {
-			const params = qs.parse(window.location.search.substring(1));
+			const params = qs.parse(
+				window.location.search.substring(1),
+			) as unknown as SearchPizzaParams;
 			const sort = sortList.find((obj) => {
-				return obj.sortProperty == params.sortProperty;
+				return obj.sortProperty == params.sortBy;
 			});
 			dispatch(setFilters({ ...params, sort }));
 			isSearch.current = true;
@@ -83,8 +88,13 @@ export default function Home(): React.ReactNode {
 
 		try {
 			dispatch(
-				//@ts-ignore
-				fetchPizzas({ category, sortBy, order, search, currentPage }),
+				fetchPizzas({
+					category,
+					sortBy,
+					order,
+					search,
+					currentPage: String(currentPage),
+				}),
 			);
 			/*const res = await axios.get(
 				`https://64fb19d3cb9c00518f7aa530.mockapi.io/items?limit=4&page=${currentPage}${category}&sortBy=${sortBy}&order=${order}${search}`,
@@ -110,7 +120,7 @@ export default function Home(): React.ReactNode {
 					categoryId={categoryId}
 					onClickCategory={onClickCategory}
 				/>
-				<Sort />
+				<SortPopup />
 			</div>
 			<h2 className="content__title">Усі піцци</h2>
 			{status == "error" ? (

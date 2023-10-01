@@ -1,14 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort } from "../redux/slices/filterSlice.js";
-
-type SortItem = {
-	name: string;
-	sortProperty: string;
-};
+import { selectSort, setSort, Sort } from "../redux/slices/filterSlice.js";
 
 type PopUpClick = React.MouseEvent<HTMLBodyElement> & { path: Node[] };
-export const sortList: SortItem[] = [
+export const sortList: Sort[] = [
 	{ name: "популярні (DESC)", sortProperty: "rating" },
 	{ name: "популярні (ASC)", sortProperty: "-rating" },
 	{ name: "ціною (DESC)", sortProperty: "price" },
@@ -17,7 +12,7 @@ export const sortList: SortItem[] = [
 	{ name: "алфавітом (ASC)", sortProperty: "-title" },
 ];
 
-export default function Sort() {
+export default function SortPopup() {
 	const sort = useSelector(selectSort);
 	const dispatch = useDispatch();
 	const [open, setOpen] = React.useState(false);
