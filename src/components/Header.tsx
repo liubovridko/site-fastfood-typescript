@@ -1,6 +1,6 @@
 import { useLocation } from "react-router";
 import { useSelector } from "react-redux";
-import { selectCart } from "../redux/slices/cartSlice.js";
+import { selectCart } from "../redux/slices/cartSlice";
 
 import { Link } from "react-router-dom";
 

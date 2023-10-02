@@ -1,15 +1,23 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort, Sort } from "../redux/slices/filterSlice.js";
+import {
+	selectSort,
+	setSort,
+	SortPropertyEnum,
+} from "../redux/slices/filterSlice";
 
+type SortItem = {
+	name: string;
+	sortProperty: SortPropertyEnum;
+};
 type PopUpClick = React.MouseEvent<HTMLBodyElement> & { path: Node[] };
-export const sortList: Sort[] = [
-	{ name: "популярні (DESC)", sortProperty: "rating" },
-	{ name: "популярні (ASC)", sortProperty: "-rating" },
-	{ name: "ціною (DESC)", sortProperty: "price" },
-	{ name: "ціною (ASC)", sortProperty: "-price" },
-	{ name: "алфавітом (DESC)", sortProperty: "title" },
-	{ name: "алфавітом (ASC)", sortProperty: "-title" },
+export const sortList: SortItem[] = [
+	{ name: "популярні (DESC)", sortProperty: SortPropertyEnum.RATING_DESC },
+	{ name: "популярні (ASC)", sortProperty: SortPropertyEnum.RATING_ASC },
+	{ name: "ціною (DESC)", sortProperty: SortPropertyEnum.PRICE_DESC },
+	{ name: "ціною (ASC)", sortProperty: SortPropertyEnum.PRICE_ASC },
+	{ name: "алфавітом (DESC)", sortProperty: SortPropertyEnum.TITLE_DESC },
+	{ name: "алфавітом (ASC)", sortProperty: SortPropertyEnum.TITLE_ASC },
 ];
 
 export default function SortPopup() {
