@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addItem, CartItem } from "../redux/slices/cartSlice.js";
+import { Link } from "react-router-dom";
+import { addItem, CartItem } from "../redux/slices/cartSlice";
 
 type PizzaBlockProps = {
 	id: string;
@@ -48,9 +49,9 @@ const PizzaBlock: React.FC<PizzaBlockProps> = ({
 		<div className="pizza-block-wrapper">
 			<div className="pizza-block">
 				<div className="pizza-block__image">
-					<picture>
+					<Link to={`/pizza/${id}`}>
 						<img src={image} />
-					</picture>
+					</Link>
 				</div>
 				<h3 className="pizza-block__title">{title}</h3>
 				<div className="pizza-block__options">

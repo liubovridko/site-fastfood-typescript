@@ -5,8 +5,8 @@ import axios from "axios";
 const SinglePizza: React.FC = () => {
 	const [pizza, setPizza] = React.useState<{
 		image: string;
-		price: string;
-		title: number;
+		price: number;
+		title: string;
 	}>();
 	const { id } = useParams();
 	const navigate = useNavigate();
@@ -32,7 +32,7 @@ const SinglePizza: React.FC = () => {
 	return (
 		<div className="container">
 			<picture>
-				<img src={pizza.image} alt="Pizza" />
+				<img src={pizza.image} alt={pizza.title} />
 			</picture>
 
 			<h2> {pizza.title}</h2>

@@ -8,18 +8,19 @@ import {
 	setCurrentPage,
 	setFilters,
 	selectFilter,
-} from "../redux/slices/filterSlice.js";
+	Sort,
+} from "../redux/slices/filterSlice";
 import {
 	selectPizzaData,
 	setItems,
 	fetchPizzas,
 	SearchPizzaParams,
-} from "../redux/slices/pizzaSlice.js";
+} from "../redux/slices/pizzaSlice";
 
 import { useAppDispatch } from "../redux/store";
 
 import qs from "qs";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Categories from "../components/Categories";
 import SortPopup, { sortList } from "../components/Sort";
@@ -75,7 +76,18 @@ export default function Home(): React.ReactNode {
 			const sort = sortList.find((obj) => {
 				return obj.sortProperty == params.sortBy;
 			});
-			dispatch(setFilters({ ...params, sort }));
+			/*if(sort){
+            	params.sort=sort;
+            }*/
+			dispatch(
+				setFilters({
+					searchValue: params.search,
+					categoryId: Number(params.category),
+					currentPage: Number(params.currentPage),
+					sort: sort || sortList[0],
+				}),
+			);
+
 			isSearch.current = true;
 		}
 	}, []);
@@ -150,13 +162,7 @@ export default function Home(): React.ReactNode {
 									return false;
 								})
 								.map((item: any, key: any) => (
-									<Link
-										key={item.id}
-										to={`/pizza/${item.id}`}
-									>
-										{" "}
-										<PizzaBlock {...item} />
-									</Link>
+									<PizzaBlock key={item.id} {...item} />
 								))}
 				</div>
 			)}

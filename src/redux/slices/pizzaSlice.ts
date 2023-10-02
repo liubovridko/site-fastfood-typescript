@@ -9,7 +9,7 @@ type fetchPizzasArgs = Record<string, string>;
 export type SearchPizzaParams = {
 	currentPage: string;
 	category: string;
-	sortBy: Sort;
+	sortBy: string;
 	order: string;
 	search: string;
 };
