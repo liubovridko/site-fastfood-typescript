@@ -51,19 +51,20 @@ const CartItemBlock: React.FC<CartItemProps> = ({
 				</div>
 			</div>
 			<div className="cart__item--count">
-				<div
+				<button
+					disabled={count == 1}
 					onClick={onClickMinus}
 					className="button button--outline button--circle"
 				>
 					-
-				</div>
+				</button>
 				<b>{count}</b>
-				<div
+				<button
 					onClick={onClickPlus}
 					className="button button--outline button--circle"
 				>
 					+
-				</div>
+				</button>
 			</div>
 			<div className="cart__item--price">
 				<b>{price * count} грн</b>
