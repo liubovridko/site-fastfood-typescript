@@ -43,7 +43,7 @@ export default function Home(): React.ReactNode {
 	//const [isLoading, setIsLoading] = React.useState(true);
 	//const [categoryId, setCategoryId] = React.useState(0);
 
-	const onClickCategory = React.useCallback((id: number) => {
+	const onChangeCategory = React.useCallback((id: number) => {
 		dispatch(setCategoryId(id));
 	}, []);
 	/*const [sortObj, setSortObj] = React.useState({
@@ -130,9 +130,9 @@ export default function Home(): React.ReactNode {
 			<div className="block__filter">
 				<Categories
 					categoryId={categoryId}
-					onClickCategory={onClickCategory}
+					onClickCategory={onChangeCategory}
 				/>
-				<SortPopup />
+				<SortPopup value={sort} />
 			</div>
 			<h2 className="content__title">Усі піцци</h2>
 			{status == "error" ? (

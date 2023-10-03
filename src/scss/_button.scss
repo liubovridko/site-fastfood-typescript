@@ -43,6 +43,20 @@
     min-width: 32px;
     padding: 0;
     border-width: 2px;
+
+    &:disabled {
+      opacity: 0.4;
+
+      border-color: #787878;
+      color: #787878;
+      &:active {
+        transform: none;
+      }
+      &:hover {
+        background-color: transparent;
+        color: #787878;
+      }
+    }
   }
 
   &--black {
