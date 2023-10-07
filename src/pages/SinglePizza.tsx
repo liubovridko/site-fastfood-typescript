@@ -31,13 +31,15 @@ const SinglePizza: React.FC = () => {
 
 	return (
 		<div className="container">
-			<picture>
-				<img src={pizza.image} alt={pizza.title} />
-			</picture>
+			<div className="pizza-block">
+				<div className="pizza-block__image">
+					<img src={"/" + pizza.image} alt={pizza.title} />
+				</div>
 
-			<h2> {pizza.title}</h2>
-			<p>description</p>
-			<h4>{pizza.price} uah</h4>
+				<h2> {pizza.title}</h2>
+				<p>description</p>
+				<h4>{pizza.price} uah</h4>
+			</div>
 		</div>
 	);
 };
