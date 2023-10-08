@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 
@@ -39,6 +40,11 @@ const SinglePizza: React.FC = () => {
 				<h2> {pizza.title}</h2>
 				<p>description</p>
 				<h4>{pizza.price} uah</h4>
+				<Link to="/">
+					<button className="button button--add">
+						<span>Назад</span>
+					</button>
+				</Link>
 			</div>
 		</div>
 	);
