@@ -22,11 +22,15 @@ import { useAppDispatch } from "../redux/store";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 
-import Categories from "../components/Categories";
-import SortPopup, { sortList } from "../components/Sort";
-import PizzaBlock from "../components/PizzaBlock";
-import Skeleton from "../components/Skeleton";
-import Pagination from "../components/Pagination/";
+import { sortList } from "../components/Sort";
+
+import {
+	Categories,
+	SortPopup,
+	PizzaBlock,
+	Skeleton,
+	Pagination,
+} from "../components";
 
 export default function Home(): React.ReactNode {
 	const { items, status } = useSelector(selectPizzaData);
